@@ -1,0 +1,193 @@
+﻿<Page x:Class="GUI.Presentation.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:GUI.Presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:um="using:Uno.Material"
+      Background="{ThemeResource BackgroundBrush}">
+
+  <Page.Resources>
+    <local:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+    <local:ImagePathConverter x:Key="ImagePathConverter"/>
+
+    <!-- COMBOBOX : TEXT -->
+    <SolidColorBrush x:Key="ComboBoxForeground" Color="#5a7040" />
+    <SolidColorBrush x:Key="ComboBoxItemForeground" Color="#5a7040" />
+    <SolidColorBrush x:Key="ComboBoxItemForegroundPointerOver" Color="#5a7040" />
+    <SolidColorBrush x:Key="ComboBoxItemForegroundSelected" Color="#5a7040" />
+    <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPointerOver" Color="#5a7040" />
+
+    <!-- COMBOBOX : BG -->
+    <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="#fff8e8" />
+    <SolidColorBrush x:Key="ComboBoxDropDownBackgroundPointerOver" Color="#fff8e8" />
+    <SolidColorBrush x:Key="ComboBoxDropDownBackgroundFocused" Color="#fff8e8" />
+    <SolidColorBrush x:Key="ComboBoxDropDownBorder" Color="#bfde99" />
+    <SolidColorBrush x:Key="MaterialSurfaceBrush" Color="#fff8e8" />
+
+    <!-- COMBOBOX : HOVER ON ITEM -->
+    <SolidColorBrush x:Key="ComboBoxItemBackgroundPointerOver" Color="#dcf7bc" />
+    <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="#bfde99" />
+    <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="#dcf7bc" />
+
+    <!-- COMBOBOX : STYLE -->
+    <Style TargetType="ComboBox" x:Key="CustomComboStyle" BasedOn="{StaticResource ComboBoxStyle}">
+      <Setter Property="FontSize" Value="12" />
+      <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+
+
+    <!-- REGISTER BUTTON : STYLE -->
+    <Style x:Key="RegisterButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialFilledButtonStyle}">
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="Foreground" Value="#5a7040" />
+      <Setter Property="Background" Value="#bfde99" />
+    </Style>
+
+    <!-- LOGIN BUTTON : STYLE -->
+    <Style x:Key="LoginButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialTextButtonStyle}">
+      <Setter Property="Foreground" Value="#5a7040" />
+    </Style>
+  </Page.Resources>
+
+  <Viewbox Stretch="Uniform">
+    <ScrollViewer IsTabStop="True">
+      <Grid utu:SafeArea.Insets="VisibleBounds"
+            Width="1440"
+            Height="810"
+            Background="#bfde99">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <utu:NavigationBar Content="{Binding Title}"
+                           Background="#5a7040"
+                           Foreground="#fff8e8" />
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="16"
+                    Orientation="Horizontal">
+            
+            <Image Source="/Assets/Splash/Grocery2.jpg"
+                   Width="840"
+                   Height="810"
+                   Stretch="UniformToFill"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+            
+            <StackPanel Width="550"
+                        Height="710"
+                        Background="#fff8e8"
+                        VerticalAlignment="Center"
+                        Padding="30">
+
+                <!-- TITLE -->
+                <TextBlock Text="FreshOut"
+                           FontSize="50"
+                           FontWeight="ExtraBold"
+                           FontFamily="{StaticResource JetBrainsMonoFont}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,40"
+                           Foreground="#5a7040" />
+
+                <!-- USERNAME -->
+                <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         PlaceholderText="Enter a cool new username"
+                         Margin="0,0,0,20" />
+                <TextBlock Text="{Binding UsernameError}"
+                           Foreground="#f54040"
+                           FontSize="12"
+                           Visibility="{Binding UsernameError, Converter={StaticResource StringToVisibilityConverter}}"
+                           Margin="0,0,0,20" />
+
+              <!-- PROFILE PIC -->
+              <StackPanel Orientation="Horizontal"
+                          Spacing="32"
+                          Margin="0,0,0,20">
+                  
+                <!-- DROPDOWN -->
+                <ComboBox Style="{StaticResource CustomComboStyle}"
+                          ItemContainerStyle="{StaticResource CompactComboBoxItemStyle}"
+                          Header="Profile picture"
+                          PlaceholderText="Choose an awesome profile picture"
+                          ItemsSource="{Binding ProfilePics}"
+                          SelectedItem="{Binding SelectedProfilePic, Mode=TwoWay}"
+                          Width="Auto"
+                          MinWidth="100"
+                          HorizontalAlignment="Left" >
+
+                  <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding}" 
+                                 FontSize="12" 
+                                 Foreground="#5a7040" 
+                                 VerticalAlignment="Center" />
+                    </DataTemplate>
+                  </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <!-- PREVIEW -->
+                <Border Width="55"
+                        Height="55"
+                        CornerRadius="3">
+
+                  <Image Source="{Binding SelectedProfilePic, Converter={StaticResource ImagePathConverter}}"
+                         Stretch="UniformToFill" />
+                </Border>
+              </StackPanel>
+
+                <!-- PASSWORD -->
+                <PasswordBox Password="{Binding Password, Mode=TwoWay}"
+                             PlaceholderText="Enter an unhackable new password"
+                             Margin="0,0,0,20" />
+                <TextBlock Text="{Binding PasswordError}"
+                           Foreground="#f54040"
+                           FontSize="12"
+                           Visibility="{Binding PasswordError, Converter={StaticResource StringToVisibilityConverter}}"
+                           Margin="0,0,0,20" />
+
+                <!-- PASSWORD CONFIRM -->
+                <PasswordBox Password="{Binding PasswordConfirm, Mode=TwoWay}"
+                             PlaceholderText="Confirm unhackable password"
+                             Margin="0,0,0,20" />
+                <TextBlock Text="{Binding PasswordConfirmError}"
+                           Foreground="#f54040"
+                           FontSize="12"
+                           Visibility="{Binding PasswordConfirmError, Converter={StaticResource StringToVisibilityConverter}}"
+                           Margin="0,0,0,20" />
+
+                <!-- REGISTER BUTTON -->
+                <Button Content="Register"
+                        AutomationProperties.AutomationId="LoginPageButton"
+                        Command="{Binding RegisterAndGoToLogin}"
+                        HorizontalAlignment="Center" 
+                        Style="{StaticResource RegisterButtonStyle}"
+                        Margin="0,10,0,30" />
+                <TextBlock Text="{Binding EmptyInputs}"
+                           Foreground="#f54040"
+                           FontSize="12"
+                           Visibility="{Binding EmptyInputs, Converter={StaticResource StringToVisibilityConverter}}"
+                           Margin="0,0,0,20" />
+                <TextBlock Text="{Binding RegistrationError}"
+                           Foreground="#f54040"
+                           FontSize="12"
+                           Visibility="{Binding RegistrationError, Converter={StaticResource StringToVisibilityConverter}}"
+                           Margin="0,0,0,20" />
+
+                <!-- LOGIN BUTTON -->
+                <Button Content="Already have an account? Click here!"
+                        AutomationProperties.AutomationId="LoginPageButton"
+                        Command="{Binding GoToLogin}"
+                        Style="{StaticResource LoginButtonStyle}"
+                        HorizontalAlignment="Center"
+                        Margin="0"/>
+                
+            </StackPanel>
+        </StackPanel>
+      </Grid>
+    </ScrollViewer>
+  </Viewbox>
+</Page>

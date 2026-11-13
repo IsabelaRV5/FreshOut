@@ -1,0 +1,163 @@
+﻿<Page x:Class="GUI.Presentation.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:GUI.Presentation"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:um="using:Uno.Material"
+      NavigationCacheMode="Required"
+      Background="{ThemeResource BackgroundBrush}">
+
+  <Page.Resources>
+    <!-- KITCHEN/GROCERY BUTTON : STYLE -->
+    <Style x:Key="FilledButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialFilledButtonStyle}">
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="Foreground" Value="#5a7040" />
+      <Setter Property="Background" Value="#bfde99" />
+    </Style>
+
+    <!-- LOGOUT BUTTON : STYLE -->
+    <Style x:Key="LogoutButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialTextButtonStyle}">
+      <Setter Property="Foreground" Value="#5a7040" />
+    </Style>
+  </Page.Resources>
+
+
+  <Viewbox Stretch="Uniform">
+    <ScrollViewer IsTabStop="True">
+      <Grid utu:SafeArea.Insets="VisibleBounds"
+            Width="1440"
+            Height="810"
+            Background="#fff8e8" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <utu:NavigationBar Content="{Binding Title}"
+                           Background="#5a7040"
+                           Foreground="#fff8e8" />
+  
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+            <StackPanel
+                Width="1070"
+                Height="740">
+
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal"
+                            Spacing="120"
+                            Margin="50,20,0,30">
+                            
+                    <!-- TITLE -->
+                    <TextBlock Text="FreshOut"
+                        FontSize="50"
+                        FontWeight="ExtraBold"
+                        FontFamily="{StaticResource JetBrainsMonoFont}"
+                        Foreground="#5a7040"
+                        />
+
+                    <TextBlock Text="The best food inventory manager"
+                        FontSize="27"
+                        FontFamily="{StaticResource JetBrainsMonoFont}"
+                        Foreground="#5a7040"
+                        VerticalAlignment="Center"     
+                        />
+                            
+                </StackPanel>
+
+                <Line X1="0" X2="1" Stroke="#5a7040" StrokeThickness="2" Stretch="Fill"/>
+
+                <!-- NAVIGATION SECTION -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="740" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                            
+                    <Image Grid.Row="0"
+                            Source="/Assets/Splash/Grocery2.jpg"
+                            Stretch="UniformToFill"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Opacity="0.6"/>
+                            
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="0,0,0,140"
+                        Spacing="100"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                                
+                        <!-- KITCHEN PAGE BUTTON -->
+                        <Button Content="See Kitchen"
+                            FontSize="19"
+                            Width="300"
+                            Height="300"
+                            AutomationProperties.AutomationId="KitchenPageButton"
+                            Command="{Binding GoToKitchen}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource FilledButtonStyle}" />
+
+                        <!-- GROCERY LISTS PAGE BUTTON -->
+                        <Button Content="See Grocery Lists"
+                            FontSize="19"
+                            Width="300"
+                            Height="300"
+                            AutomationProperties.AutomationId="GorceryListsPageButton"
+                            Command="{Binding GoToGroceryLists}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource FilledButtonStyle}" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <!-- SEPERATION LINE -->
+            <Line Y1="0" Y2="1" Stroke="#5a7040" StrokeThickness="2" Stretch="Fill" Grid.Column="1"/>
+            
+            <!--     ACCOUNT SECTION     -->
+            <StackPanel Width="350"
+                Height="630"
+                Spacing="20"
+                Orientation="Vertical"
+                Margin="20,0,40,0">
+
+                <!-- PROFILE PIC PREVIEW -->
+                <Border Width="135"
+                    Height="135"
+                    CornerRadius="5"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+                <Image Source="{Binding ProfilePic}"
+                    Stretch="UniformToFill" />
+                </Border>
+
+                <!-- USERNAME -->
+                <TextBlock Text="{Binding Username}"
+                    FontSize="22"
+                    Foreground="#5a7040"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <Line X1="0" X2="1" Stroke="#5a7040" StrokeThickness="2" Stretch="Fill"/>
+
+                <!-- LOG OUT -->
+                <Button Content="Log out"
+                    FontSize="20"
+                    AutomationProperties.AutomationId="LogOutButton"
+                    Command="{Binding GoToLogin}"
+                    HorizontalAlignment="Center" 
+                    Style="{StaticResource LogoutButtonStyle}" />
+            </StackPanel>
+        </StackPanel>
+      </Grid>
+    </ScrollViewer>
+  </Viewbox>
+</Page>

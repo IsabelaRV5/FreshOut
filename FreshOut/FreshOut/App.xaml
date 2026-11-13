@@ -1,0 +1,30 @@
+﻿<Application x:Class="FreshOut.App"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:utum="using:Uno.Toolkit.UI.Material">
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <!-- Load WinUI resources -->
+        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+        <utum:MaterialToolkitTheme
+          ColorOverrideSource="ms-appx:///Styles/ColorPaletteOverride.xaml">
+          <!-- NOTE: You can override the default Roboto font by providing your font assets here. -->
+          <utum:MaterialToolkitTheme.FontOverrideDictionary>
+            <ResourceDictionary>
+              <FontFamily x:Key="JetBrainsMonoFont">ms-appx:///Assets/Fonts/JetBrainsMonoNerdFontPropo-Regular.ttf#JetBrains Mono</FontFamily>
+              <!-- <StaticResource x:Key="MaterialLightFontFamily" ResourceKey="JetBrainsMonoFontNerdFontPropo-SemiBold" /> -->
+              <StaticResource x:Key="MaterialMediumFontFamily" ResourceKey="JetBrainsMonoFont" />
+              <StaticResource x:Key="MaterialRegularFontFamily" ResourceKey="JetBrainsMonoFont" />  
+            </ResourceDictionary>
+          </utum:MaterialToolkitTheme.FontOverrideDictionary>
+        </utum:MaterialToolkitTheme>
+      </ResourceDictionary.MergedDictionaries>
+
+      <!-- Add resources here -->
+
+    </ResourceDictionary>
+  </Application.Resources>
+
+</Application>

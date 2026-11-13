@@ -1,0 +1,113 @@
+﻿<Project Sdk="Uno.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net9.0-browserwasm;net9.0-desktop;net9.0</TargetFrameworks>
+
+    <OutputType>Exe</OutputType>
+    <UnoSingleProject>true</UnoSingleProject>
+
+    <!-- Display name -->
+    <ApplicationTitle>FreshOut</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>com.companyname.FreshOut</ApplicationId>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <!-- Package Publisher -->
+    <ApplicationPublisher>dc221</ApplicationPublisher>
+    <!-- Package Description -->
+    <Description>FreshOut powered by Uno Platform.</Description>
+
+    <!--
+      UnoFeatures are used to quickly add and manage features enabled for your app.
+      https://aka.platform.uno/singleproject-features
+    -->
+    <UnoFeatures>
+      Material;
+      Dsp;
+      Hosting;
+      Toolkit;
+      Logging;
+      Mvvm;
+      Configuration;
+      HttpKiota;
+      Serialization;
+      Localization;
+      Navigation;
+      ThemeService;
+      SkiaRenderer;
+    </UnoFeatures>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Presentation\Login\Assets\**" />
+    <Content Remove="Presentation\Login\Assets\**" />
+    <EmbeddedResource Remove="Presentation\Login\Assets\**" />
+    <None Remove="Presentation\Login\Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Fonts\" />
+    <Folder Include="Assets\ProfilePics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Presentation\Kitchen\KitchenPage.xaml.cs">
+      <DependentUpon>KitchenPage.xaml</DependentUpon>
+    </Compile>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Data.csproj" />
+    <ProjectReference Include="..\..\Logic\Logic.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\AddIngredient\AddIngredientPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\GroceryLists\GroceryListsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\Login\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\Registration\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Remove="Presentation\Login\Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Presentation\Login\Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="Presentation\Login\Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\AddFoodItem\AddLocationItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Presentation\AddFoodItem\AddGroceryItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Presentation\EditItem\EditItemPage.xaml.cs">
+            <DependentUpon>EditItemPage.xaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Page Update="Presentation\EditItem\EditItemPage.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
+    </ItemGroup>
+</Project>

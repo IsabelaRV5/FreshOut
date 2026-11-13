@@ -1,0 +1,186 @@
+﻿<Page x:Class="GUI.Presentation.EditItemPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:GUI.Presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:um="using:Uno.Material"
+      xmlns:not_win="http://uno.ui/not_win"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:ut="using:Uno.Themes"
+      Background="{ThemeResource BackgroundBrush}">
+
+  <Grid utu:SafeArea.Insets="VisibleBounds">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <utu:NavigationBar Content="Edit Item" />
+        <Image Source="/Assets/Splash/Red_Food.gif"
+            Grid.Row="1"
+            Stretch="UniformToFill"/>
+        <StackPanel Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="16"
+                Background="#ffc9c9"
+                Padding="50"
+                Width="500">
+
+            <TextBlock
+                Text="{Binding SelectedItem.Name}"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="30"
+                FontFamily="/Assets/Fonts/JetBrainsMonoNerdFontPropo-MediumItalic.ttf#JetBrainsMono NFP Medium"/>
+
+      <!-- Item Name -->
+      <TextBox Header="Item name"
+               PlaceholderText="{Binding SelectedItem.Name}"
+               Text="{Binding FoodName, Mode=TwoWay}"
+               Style="{StaticResource FilledTextBoxStyle}"
+               IsHitTestVisible="{Binding PointerMode}">
+                <TextBox.Resources>
+                    <!-- Placeholder foreground  -->
+                    <SolidColorBrush x:Key="FilledTextBoxPlaceholderForegroundPointerOver" Color="DarkGray"/>
+                    <SolidColorBrush x:Key="FilledTextBoxPlaceholderForeground" Color="DarkGray"/>
+                    <SolidColorBrush x:Key="FilledTextBoxPlaceholderForegroundFocused" Color="DarkGray"/>
+
+                    <!-- Text Foreground  -->
+                    <SolidColorBrush x:Key="FilledTextBoxForeground" Color="Black"/>
+                    <SolidColorBrush x:Key="FilledTextBoxForegroundPointerOver" Color="Black"/>
+                    <SolidColorBrush x:Key="FilledTextBoxForegroundFocused" Color="Black"/>
+
+                    <!-- Header foreground  -->
+                    <SolidColorBrush x:Key="FilledTextBoxHeaderForeground" Color="Black"/>
+                    <SolidColorBrush x:Key="FilledTextBoxHeaderForegroundPointerOver" Color="Black"/>
+                    <SolidColorBrush x:Key="FilledTextBoxHeaderForegroundFocused" Color="Black"/>
+
+                    <!-- Background  -->
+                    <SolidColorBrush x:Key="FilledTextBoxBackgroundFocused" Color="#fab1b1"/>
+                    <SolidColorBrush x:Key="FilledTextBoxBackgroundPointerOver" Color="#fab1b1"/>
+                    <SolidColorBrush x:Key="FilledTextBoxBackground" Color="#fab1b1"/>
+                </TextBox.Resources>
+            </TextBox>
+
+      <!-- Quantity -->
+            <Border BorderBrush="{ThemeResource TextControlBorderBrush}"
+              BorderThickness="1"
+              CornerRadius="4"
+              Padding="10,6"
+              Background="#fab1b1">
+        <muxc:NumberBox Header="Quantity"
+                        Value="{Binding Quantity, Mode=TwoWay}"
+                        PlaceholderText="{Binding SelectedItem.Quantity}"
+                        Minimum="1"
+                        SpinButtonPlacementMode="Compact"
+                        SmallChange="1"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        FontFamily="{StaticResource JetBrainsMonoFont}"
+                        IsHitTestVisible="{Binding PointerMode}"/>
+      </Border>
+
+      <!-- Categories -->
+            <ComboBox Style="{StaticResource ComboBoxStyle}"
+                Header="Category"
+                ItemsSource="{Binding Categories}"
+                PlaceholderText="{Binding SelectedItem.Type}"
+                SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                Background="#fab1b1"
+                IsHitTestVisible="{Binding PointerMode}">
+                <ComboBox.Resources>
+                    <!-- Placeholder foreground  -->
+                    <SolidColorBrush x:Key="ComboBoxPlaceholderForegroundPointerOver" Color="DarkGray"/>
+                    <SolidColorBrush x:Key="ComboBoxPlaceHolderForeground" Color="DarkGray"/>
+                    <SolidColorBrush x:Key="ComboBoxPlaceholderForegroundFocused" Color="DarkGray"/>
+
+                    <!-- Text Foreground  -->
+                    <SolidColorBrush x:Key="ComboBoxForeground" Color="Black"/>
+                    <SolidColorBrush x:Key="ComboBoxForegroundPointerOver" Color="Black"/>
+                    <SolidColorBrush x:Key="ComboBoxForegroundFocused" Color="Black"/>
+
+                    <!-- Background  -->
+                    <SolidColorBrush x:Key="ComboBoxBackgroundUnfocused" Color="#fab1b1"/>
+                    <SolidColorBrush x:Key="ComboBoxBackgroundFocused" Color="#fab1b1"/>
+                    <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#fab1b1"/>
+                    <SolidColorBrush x:Key="ComboBoxBackground" Color="#fab1b1"/>
+
+                    <!-- Header Color -->
+                    <SolidColorBrush x:Key="ComboBoxUpperPlaceHolderForeground" Color="Black"/>
+                    <SolidColorBrush x:Key="ComboBoxUpperPlaceHolderForegroundPointerOver" Color="Black"/>
+                    <SolidColorBrush x:Key="ComboBoxUpperPlaceHolderForegroundFocusedPressed" Color="Black"/>
+
+                    <!-- Border color -->
+                    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="Transparent"/>
+                </ComboBox.Resources>
+            </ComboBox>
+
+            <!-- Expiration Date -->
+      <TextBlock Text="Expiration Date: " Visibility="{Binding ExpDateVisibility}"/>
+      <Border BorderBrush="{ThemeResource TextControlBorderBrush}"
+              BorderThickness="1"
+              CornerRadius="4"
+              Padding="10,6"
+              Background="{ThemeResource TextControlBackground}"
+              Visibility="{Binding ExpDateVisibility}" >
+          <DatePicker Header="{Binding SelectedItem.ExpirationDate}"
+                Background="Transparent"
+                BorderThickness="0"
+                HorizontalAlignment="Stretch"
+                BorderBrush="Transparent"
+                SelectedDate="{Binding SelectedExpDate, Mode=TwoWay}"
+                Style="{ThemeResource DatePickerStyle}"
+                IsHitTestVisible="{Binding PointerMode}">
+                    <DatePicker.Resources>
+                        <SolidColorBrush x:Key="DatePickerPlaceholderTextForeground" Color="DarkGray"/>
+                        <SolidColorBrush x:Key="DatePickerButtonDateTextForeground" Color="Black"/>
+                        <SolidColorBrush x:Key="DatePickerButtonDateTextForegroundPointerOver" Color="Black"/>
+                    </DatePicker.Resources>
+              </DatePicker> 
+      </Border>
+
+      <!-- Edit Item Button -->
+            <Button Content="Edit Item"
+              AutomationProperties.AutomationId="EditIngredientButton"
+              Command="{Binding EditFoodItem}"
+              Style="{StaticResource MaterialFilledButtonStyle}"
+              Background="#f7a3a3"
+              Foreground="#2e0b0b"
+              HorizontalAlignment="Center"
+              Click="ShowPopupOffsetClicked"
+              IsHitTestVisible="{Binding PointerMode}"/>
+        </StackPanel>
+      
+     <Popup VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            VerticalOffset="-150"
+            HorizontalOffset="-250"
+            x:Name="StandardPopup" Grid.Column="1"
+            Grid.Row="1">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                 Background="#fffcf5"
+                 Opacity="0.9"
+                 BorderThickness="1" Width="500" Height="300"
+                 CornerRadius="20">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Invalid inputs! Item is not changed." FontWeight="Bold" FontSize="23" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="Red" Visibility="{Binding ErrorMessage}"/>
+                        <TextBlock Grid.Row="0" Text="Item successfully modified!" FontWeight="Bold" FontSize="23" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="LightSeaGreen" Visibility="{Binding SuccessMessage}"/>
+                    </Grid>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="20" Margin="0,0,0,10">
+                        <Button Content="Okay" Click="ClosePopupClicked" Padding="15"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</Page>

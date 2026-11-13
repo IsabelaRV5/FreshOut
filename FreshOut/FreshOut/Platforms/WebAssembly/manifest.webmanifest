@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "FreshOut",
+  "display": "standalone",
+  "name": "FreshOut",
+  "short_name": "FreshOut",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
