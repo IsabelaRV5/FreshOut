@@ -106,10 +106,10 @@ Sign in as `freshout-demo` to see a fridge and pantry with expired, nearly expir
 
 ---
 
-## Authors and acknowledgement
+## Authors
 
-- Xena Tat  
-- Jiha Poitevin  
-- Isabela Resende Vasconcelos  
-  
+- Isabela Resende Vasconcelos
+- Xena Tat
+- Jiha Poitevin
+
 README.md template adapted from https://www.makeareadme.com/  
