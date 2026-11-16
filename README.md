@@ -120,7 +120,7 @@ Sign in as `freshout-demo` to see a fridge and pantry with expired, nearly expir
 ## Authors
 
 - Isabela Resende Vasconcelos
-- Xena Tat
 - Jiha Poitevin
+- Xena Tat
 
 README.md template adapted from https://www.makeareadme.com/  
