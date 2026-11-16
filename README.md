@@ -9,9 +9,20 @@ In our app *FreshOut*, users can login or register to make two types of lists:
 
 ---
 
-## Isabela’s contributions
+## Contributions
 
-This Dawson College project was built by a team of three. Isabela integrated PostgreSQL persistence with Entity Framework Core and configured .NET user secrets. She also implemented navigation that passes user data between pages, item deletion, and dedicated editing pages.
+**Isabela Resende Vasconcelos**
+- Integrated PostgreSQL storage using Entity Framework and configured secure user secrets.
+- Implemented page navigation with user data transfer, item deletion and per-item editing pages.
+
+**Jiha Poitevin**
+- Styled the registration and grocery list pages.
+- Implemented input validation to ensure user-submitted data meets the required criteria.
+- Developed a dropdown menu for selecting profile pictures.
+  
+**Xena Tat**
+- Developed sorting and search functionality to help users find and organize grocery/location list items.
+- Designed the main user interface, focusing on usability and visual consistency.
 
 ## Quick start
 
