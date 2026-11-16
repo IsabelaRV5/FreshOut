@@ -16,9 +16,8 @@ In our app *FreshOut*, users can login or register to make two types of lists:
 - Implemented page navigation with user data transfer, item deletion and per-item editing pages.
 
 **Jiha Poitevin**
-- Styled the registration and grocery list pages.
+- Styled and programmed the registration, login and grocery list pages.
 - Implemented input validation to ensure user-submitted data meets the required criteria.
-- Developed a dropdown menu for selecting profile pictures.
   
 **Xena Tat**
 - Developed sorting and search functionality to help users find and organize grocery/location list items.
